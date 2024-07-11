@@ -1,1 +1,1 @@
-drop trigger reduce_quantity;
+drop trigger reset_valid_email;
