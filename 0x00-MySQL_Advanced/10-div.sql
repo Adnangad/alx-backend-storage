@@ -1,0 +1,10 @@
+-- creates a func
+DELIMITER $$
+
+CREATE FUNCTION SafeDiv(a INT, b INT)
+RETURNS FLOAT
+BEGIN
+    RETURN IF(b = 0, 0, CAST(a AS FLOAT) / b);
+END $$
+
+DELIMITER ;
