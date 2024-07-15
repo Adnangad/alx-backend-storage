@@ -1,0 +1,2 @@
+// finds a doc with specified param
+db.school.find({name: "Holberton school"});
