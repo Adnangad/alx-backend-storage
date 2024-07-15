@@ -1,0 +1,2 @@
+// counts the number of occurrences of a doc
+db.school.countDocuments({});
