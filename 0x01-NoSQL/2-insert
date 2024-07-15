@@ -1,3 +1,2 @@
 // inserts a doc in a collection
-db.createCollection("school");
-db.school.insertOne({name: 'Holberton school'});
+db.school.insert({name: "Holberton school"});
