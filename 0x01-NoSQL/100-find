@@ -1,0 +1,2 @@
+// finds a doc
+db.school.find({"name": {$elemMatch: {$eq: "Holberton"}}});
