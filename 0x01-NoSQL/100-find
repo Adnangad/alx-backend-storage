@@ -1,2 +1,2 @@
 // finds a doc
-db.school.find({"name": {$elemMatch: {$eq: "Holberton"}}});
+db.school.find({"name": /^Holberton/});
