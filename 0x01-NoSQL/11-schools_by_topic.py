@@ -11,4 +11,4 @@ def schools_by_topic(mongo_collection, topic):
     topic: the topic to be searched
     """
     rez = mongo_collection.find({'topic': {"$elemMatch": {"$eq": topic}}})
-    return rez
+    return [i for i in rez]
