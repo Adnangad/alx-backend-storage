@@ -10,8 +10,5 @@ def schools_by_topic(mongo_collection, topic):
     mongo_collection: the collection
     topic: the topic to be searched
     """
-    ls = []
     rez = mongo_collection.find({'topic': {"$all": [topic]}})
-    for i in rez:
-        ls.append(i)
-    return ls
+    return rez
