@@ -18,6 +18,6 @@ class Cache:
         """
         generates a key and inserts data to redis db
         """
-        key = str(uuid.uuid4())
+        key = int(uuid.uuid4())
         self._redis.set(key, data)
         return key
