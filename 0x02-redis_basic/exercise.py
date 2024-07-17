@@ -5,6 +5,21 @@ This module manipulates the redis db
 import redis
 import uuid
 from typing import Union
+from functools import wrapper
+
+
+def count_calls(method):
+    """
+    A decorator
+    """
+    @wraps(method)
+    def wrapper(self, *args, **kwds):
+        """
+        The wrapper function
+        """
+        self._redis.incr(method.__qualname__)
+        return method(self, *args, **kwds)
+    return wrapper
 
 
 class Cache:
@@ -15,6 +30,7 @@ class Cache:
         self._redis = redis.Redis()
         self._redis.flushdb()
 
+    @count_calls
     def store(self, data: Union[str, bytes, int, float]) -> str:
         """
         generates a key and inserts data to redis db
