@@ -4,21 +4,21 @@ This module manipulates the redis db
 """
 import redis
 import uuid
-from typing import Union
+from typing import Union, Callable
 from functools import wrapper
 
 
-def count_calls(method):
+def count_calls(method: Callable) -> Callable:
     """
     A decorator
     """
     @wraps(method)
-    def wrapper(self, *args, **kwds):
+    def wrapper(self, *args, **kwargs):
         """
         The wrapper function
         """
         self._redis.incr(method.__qualname__)
-        return method(self, *args, **kwds)
+        return method(self, *args, **kwargs)
     return wrapper
 
 
