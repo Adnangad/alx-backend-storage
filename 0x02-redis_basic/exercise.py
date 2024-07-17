@@ -80,6 +80,12 @@ class Cache:
         """
         return self.get(key, fn=int)
 
+    def get_input_history(self, method):
+        return self._redis.lrange(f"{method.__qualname__}:inputs", 0, -1)
+
+    def get_output_history(self, method):
+        return self._redis.lrange(f"{method.__qualname__}:outputs", 0, -1)
+
 
 def replay(method):
     """
